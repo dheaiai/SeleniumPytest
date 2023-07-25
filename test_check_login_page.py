@@ -5,20 +5,20 @@ import time
 import pytest
 import pytest_html
 
-import yaml
+import my_yaml
 # Library
-from APILayer.API import *
+from APILayer.API import APIOps
 from tools.logs import LogInformation
 
 
 def writeyaml(dict):
-    file = open("yaml/search_data.yaml", "w")
-    yaml.dump(dict, file)
+    file = open("my_yaml/search_data.yaml", "w")
+    my_yaml.dump(dict, file)
 
-# real data from yaml file
+# real data from my_yaml file
 def readyaml(loggingData, toFetchTestData):
-    with open('yaml/config_magento.yaml', 'r') as file:
-        TestData = yaml.safe_load(file)
+    with open('my_yaml/config_magento.yaml', 'r') as file:
+        TestData = my_yaml.safe_load(file)
         loggingData.TEST_INFORMATION(namefile=inspect.currentframe().f_code.co_name, message=TestData[toFetchTestData])
     return TestData[toFetchTestData]
 

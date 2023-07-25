@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -24,22 +25,22 @@ class APIOps:
         elif byclass == "TAG_NAME":
             return By.TAG_NAME    
     
-    def presence_of_element_located(self, driver, element, timeout):
+    def presence_of_element_located(self, element, timeout):
         try:
-            element_present = EC.presence_of_element_located((by_locator(element[0]), element[1]))
-            WebDriverWait(driver, timeout).until(element_present)
+            element_present = EC.presence_of_element_located((self.by_locator(element[0]), element[1]))
+            WebDriverWait(self.driver, timeout).until(element_present)
             return True
         except TimeoutException:
             return False
         
-    def find_element(self, driver, element):
-        return driver.find_element(by_locator(element[0]), element[1])
+    def find_element(self, element):
+        return self.driver.find_element(self.by_locator(element[0]), element[1])
        
-    def find_elements(self, driver, element):
-        return driver.find_elements(by_locator(element[0]), element[1])
+    def find_elements(self, element):
+        return self.driver.find_elements(self.by_locator(element[0]), element[1])
        
     def web_driver(self):
         return webdriver.Chrome()
         
-    def open_url(self, TestData)
-        driver.get(TestData['url'])
+    def open_url(self, url):
+        self.driver.get(url)
