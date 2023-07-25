@@ -17,23 +17,24 @@ def test_form_authentication(driver):
   
     bPresence = form.check_element_presence("username")
     if bPresence is true:
+        form.enter_username(TestData)
         loggingData.TEST_INFORMATION(namefile=functionname, message="username - " + TestData['username'])
-       form.enter_password(TestData)
-    loggingData.TEST_INFORMATION(namefile=functionname, message="password - " + TestData['password'])
+        form.enter_password(TestData)
+        loggingData.TEST_INFORMATION(namefile=functionname, message="password - " + TestData['password'])
   
-    form.press_submit_button()
+        form.press_submit_button()
 
-    bPresence = form.check_element_presence("mainmenu")
-    if bPresence is true:
-      actualUrl = driver.current_url
-      expectedUrl = TestData['expected']
-      assert expectedUrl, actualUrl
-      loggingData.TEST_INFORMATION(namefile=functionname, message="expectedUrl - " + expectedUrl)
-      loggingData.TEST_INFORMATION(namefile=functionname, message="actualUrl - " + actualUrl)  
+        bPresence = form.check_element_presence("mainmenu")
+        
+        if bPresence is true:
+            actualUrl = driver.current_url
+            expectedUrl = TestData['expected']
+            assert expectedUrl, actualUrl
+            loggingData.TEST_INFORMATION(namefile=functionname, message="expectedUrl - " + expectedUrl)
+            loggingData.TEST_INFORMATION(namefile=functionname, message="actualUrl - " + actualUrl)  
+        else:
+            loggingData.TEST_INFORMATION(namefile=functionname, message="main menu took too much time to load")
     else:
-      loggingData.TEST_INFORMATION(namefile=functionname, message="main menu took too much time to load")
-      form.enter_username(TestData)
-    else:
-      loggingData.TEST_INFORMATION(namefile=functionname, message="username took too much time to load")
+        loggingData.TEST_INFORMATION(namefile=functionname, message="username took too much time to load")
             
     loggingData.TEST_INFORMATION(namefile=functionname, message="*******End test - test_check_login********")
