@@ -1,4 +1,4 @@
-# Library
+ame_# Library
 from APILayer.API import APIOps
 
 class FormAuthentication(APIOps):
@@ -8,7 +8,7 @@ class FormAuthentication(APIOps):
     SubmitBtn = ["ID", "send2"]
     mainmenu = ["CLASS_NAME", "ui.nav.items"]
 
-    def check_element_presence(self, username, timeout):
+    def check_username_presence(self, username, timeout):
         return self.presence_of_element_located(username, timeout)
       
     def enter_username(self, username, TestData)  
