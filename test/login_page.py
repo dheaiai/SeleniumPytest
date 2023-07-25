@@ -22,3 +22,6 @@ class FormAuthentication(APIOps):
     def press_submit_button(self, SubmitBtn)
         SignIn_button = self.find_element(SubmitBtn)
         SignIn_button.submit()
+      
+    def open_url_no_navigate(self, TestData)
+        open_url(TestData['url'])
