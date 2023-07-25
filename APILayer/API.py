@@ -32,10 +32,10 @@ class APIOps:
             return True
         except TimeoutException:
             return False
-        
+
     def find_element(self, element):
         return self.driver.find_element(self.by_locator(element[0]), element[1])
-       
+
     def find_elements(self, element):
         return self.driver.find_elements(self.by_locator(element[0]), element[1])
        
@@ -44,3 +44,9 @@ class APIOps:
         
     def open_url(self, url):
         self.driver.get(url)
+
+    def find_element_by_object(self, obj, element):
+        return obj.find_element(self.by_locator(element[0]), element[1])
+
+    def find_elements_by_object(self, obj, element):
+        return obj.find_elements(self.by_locator(element[0]), element[1])
