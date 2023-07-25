@@ -18,12 +18,13 @@ def by_locator(byclass):
         return By.TAG_NAME
 
 
-def presence_of_element_located(logging, driver, namefile, element, timeout):
+def presence_of_element_located(driver, element, timeout):
     try:
         element_present = EC.presence_of_element_located((by_locator(element[0]), element[1]))
         WebDriverWait(driver, timeout).until(element_present)
+        return True
     except TimeoutException:
-        logging.TEST_INFORMATION(namefile=namefile, message="Timed out waiting for page to load")
+        return False
 
 
 def find_element(driver, element):
