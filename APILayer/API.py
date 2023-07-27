@@ -3,6 +3,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
 
@@ -50,3 +51,6 @@ class APIOps:
 
     def find_elements_by_object(self, obj, element):
         return obj.find_elements(self.by_locator(element[0]), element[1])
+
+    def select_sort_drop_down(self,element):
+        return Select(self.driver.find_element(self.by_locator(element[0]), element[1]))

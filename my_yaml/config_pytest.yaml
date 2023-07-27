@@ -9,3 +9,6 @@ test_form_search:
   username: "dheerajjain60@gmail.com"
   password: "Jan@2012"
   expected: "https://magento.softwaretestingboard.com/"
+test_form_search_page:
+  searchFor: "yoga"
+  url: "https://magento.softwaretestingboard.com/customer/account/login/"
