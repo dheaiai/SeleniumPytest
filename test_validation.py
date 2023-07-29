@@ -1,5 +1,5 @@
 import time
-
+import allure
 import pytest
 from selenium.webdriver import Keys
 
@@ -11,6 +11,8 @@ from tools.logs import LogInformation
 import inspect
 
 
+@allure.description("test_form_authentication : This test check the login functionality with correct credentials")
+@pytest.mark.forallure
 def test_form_authentication(driver):
     functionname = inspect.currentframe().f_code.co_name
     loggingData = LogInformation(namefile=functionname)
