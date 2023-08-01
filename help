@@ -1,0 +1,2 @@
+# to check if list os already sorted or not.
+all(a <= b for a, b in zip(test_list, test_list[1:]))
