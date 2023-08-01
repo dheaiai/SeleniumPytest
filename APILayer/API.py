@@ -1,8 +1,9 @@
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver import ActionChains
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.color import Color
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -13,7 +14,7 @@ class APIOps:
         self.driver = driver
         self._wait = WebDriverWait(self.driver, 10)
         self._action = ActionChains(self.driver)
-        
+
     def by_locator(self, byclass):
         if byclass == "NAME":
             return By.NAME
@@ -24,8 +25,8 @@ class APIOps:
         elif byclass == "XPATH":
             return By.XPATH
         elif byclass == "TAG_NAME":
-            return By.TAG_NAME    
-    
+            return By.TAG_NAME
+
     def presence_of_element_located(self, element, timeout):
         try:
             element_present = EC.presence_of_element_located((self.by_locator(element[0]), element[1]))
@@ -39,10 +40,10 @@ class APIOps:
 
     def find_elements(self, element):
         return self.driver.find_elements(self.by_locator(element[0]), element[1])
-       
+
     def web_driver(self):
         return webdriver.Chrome()
-        
+
     def open_url(self, url):
         self.driver.get(url)
 
@@ -52,5 +53,11 @@ class APIOps:
     def find_elements_by_object(self, obj, element):
         return obj.find_elements(self.by_locator(element[0]), element[1])
 
-    def select_sort_drop_down(self,element):
+    def select_sort_drop_down(self, element):
         return Select(self.driver.find_element(self.by_locator(element[0]), element[1]))
+
+    def set_send_key(self, obj):
+        obj.send_keys(Keys.RETURN)
+
+    def get_hex_value_color(self, rgb):
+        return Color.from_string(rgb).hex
