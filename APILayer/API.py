@@ -61,3 +61,4 @@ class APIOps:
 
     def get_hex_value_color(self, rgb):
         return Color.from_string(rgb).hex
+

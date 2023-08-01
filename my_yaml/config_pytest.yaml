@@ -12,9 +12,14 @@ test_form_search:
 test_form_search_page:
   searchFor: "yoga"
   url: "https://magento.softwaretestingboard.com/customer/account/login/"
-test_product_selection:
-  url: "https://magento.softwaretestingboard.com/atlas-fitness-tank.html"
-  name: "Atlas Fitness Tank"
+test_product_information:
+  url: "https://magento.softwaretestingboard.com/typhon-performance-fleece-lined-jacket.html"
+  name: "Typhon Performance Fleece-lined Jacket"
   size: ["XS", "S", "M","L", "XL"]
-  color: ["#1857f7"]
-  price: "$18.00"
+  color: ["#000000", "#53a828", "#ff0000"]
+  price: "$60.00"
+test_all_items_in_cart:
+  XS: 1
+  S: 2
+  M: 3
+  total: "360.00"
